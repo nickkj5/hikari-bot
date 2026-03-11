@@ -4,7 +4,6 @@ from telegram.ext import ApplicationBuilder, CommandHandler, ContextTypes
 
 TOKEN = os.getenv("BOT_TOKEN")
 
-# Comandos
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await update.message.reply_text("Oi oi! Eu sou a Hikari 🌸")
 
@@ -24,15 +23,10 @@ async def fixar(update: Update, context: ContextTypes.DEFAULT_TYPE):
     else:
         await update.message.reply_text("Responda a uma mensagem com /fixar para fixá-la 📌")
 
-# Criação da aplicação
 app = ApplicationBuilder().token(TOKEN).build()
-
-# Adicionando handlers
 app.add_handler(CommandHandler("start", start))
 app.add_handler(CommandHandler("ping", ping))
 app.add_handler(CommandHandler("fixar", fixar))
 
 print("Hikari iniciou!")
-
-# Rodar o bot
 app.run_polling()
